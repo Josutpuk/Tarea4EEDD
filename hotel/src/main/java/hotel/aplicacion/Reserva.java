@@ -45,7 +45,24 @@ public class Reserva {
         contadorReservas++;
         return contadorReservas;
     }
-
+    /**
+     * Calcula el coste total de la reserva en función de la duración de la estancia, 
+     * el tipo de habitación seleccionada y si se ha solicitado una cama supletoria.
+     * 
+     * El cálculo se realiza tomando en cuenta los siguientes factores:
+     * <ul>
+     *   <li>El precio de la habitación se basa en el tipo seleccionado: 
+     *       <ul>
+     *         <li>Habitación doble: 50.0 Euros por noche.</li>
+     *         <li>Suite: 100.0 Euros por noche.</li>
+     *       </ul>
+     *   </li>
+     *   <li>Si se solicita una cama supletoria, se añade un recargo de 20.0 Euros por noche.</li>
+     *   <li>Si la duración de la estancia es superior a 7 noches, se aplica un descuento del 10% sobre el total.</li>
+     * </ul>
+     * 
+     * @return El coste total de la reserva en Euros.
+     */
     
     public double calcularCosteTotal() {
         long noches = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
