@@ -2,20 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package hotel.modelo;
-
-import hotel.utilidades.Utilidades;
+package hotel.aplicacion;
 
 /**
  *
- * @author Antonio
+ * @author Josutpuk
  */
 public class Cliente {
     private static int contadorClientes = 0;
     private int codigo;
-    public String nombre;
-    public String dni;
-    public String telefono;
+    private String nombre;
+    private String dni;
+    private String telefono;
 
     
     public Cliente(String nombre, String dni, String telefono) throws Exception {
@@ -27,7 +25,47 @@ public class Cliente {
         this.codigo = obtenerNumeroCliente();
     }
 
-        private static int obtenerNumeroCliente() {
+        public static int getContadorClientes() {
+		return contadorClientes;
+	}
+
+	public static void setContadorClientes(int contadorClientes) {
+		Cliente.contadorClientes = contadorClientes;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+		private static int obtenerNumeroCliente() {
         contadorClientes++;
         return contadorClientes;
     }

@@ -3,16 +3,12 @@
  */
 package hotel.aplicacion;
 
-import hotel.modelo.Cliente;
-import hotel.modelo.Reserva;
-import hotel.modelo.TipoHabitacion;
-import hotel.utilidades.Utilidades;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
  *
- * @author Antonio
+ * @author Josutpuk
  */
 public class Hotel {
 
@@ -44,29 +40,8 @@ public class Hotel {
 				// Opción para crear clientes
 				try {
 					String nombre;
-					do {
-						System.out.println("\nIntroduzca los datos del cliente:");
-						System.out.print("Nombre: ");
-						nombre = sc.nextLine();
-					} while(nombre.isEmpty());
-					
-					String dni=null;
-					boolean dniValido;
-					do {
-						try {
-							System.out.print("Introduzca DNI: ");
-							dni = sc.nextLine();
-							Utilidades.validarDNI(dni);
-							dniValido=true;
-						} catch (Exception e) {
-							System.out.println(e.getMessage());
-							dniValido=false;
-						}
-					} while (!dniValido);
-					System.out.print("Teléfono: ");
-					String telefono = sc.nextLine();
 					// Se crea el primer cliente con datos ingresados por el usuario.
-					cliente1 = new Cliente(nombre, dni, telefono);
+					cliente1 = altaCliente(sc);
 					System.out.println("Cliente creado correctamente:\n" + cliente1.mostrarInformacion());
 					
 					// Creación de dos clientes adicionales con datos literales.
@@ -210,5 +185,32 @@ public class Hotel {
 
 		sc.close();
 	}
+		public static Cliente altaCliente(Scanner sc) {
+			String nombre;
+			do {
+				System.out.println("\nIntroduzca los datos del cliente:");
+				System.out.print("Nombre: ");
+				nombre = sc.nextLine();
+			} while (nombre.isEmpty());
+
+			String dni = null;
+			boolean dniValido;
+			do {
+				try {
+					System.out.print("Introduzca DNI: ");
+					dni = sc.nextLine();
+					Utilidades.validarDNI(dni);
+					dniValido = true;
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					dniValido = false;
+				}
+			} while (!dniValido);
+			System.out.print("Teléfono: ");
+			String telefono = sc.nextLine();
+
+			// Se crea y devuelve el cliente con los datos ingresados
+			return new Cliente(nombre, dni, telefono);
+		}
 
 }
